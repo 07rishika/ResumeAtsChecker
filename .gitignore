@@ -64,3 +64,4 @@ coverage/
 
 ### Miscellaneous ###
 *.lock
+frontend/node/
