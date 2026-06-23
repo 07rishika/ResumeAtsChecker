@@ -1,16 +1,31 @@
 package com.resume.ats.check.controller;
 
-import com.resume.ats.check.utils.FileTextExtractor;
-import com.resume.ats.check.utils.KeywordMatcher;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.resume.ats.check.service.GeminiService;
+import com.resume.ats.check.utils.FileTextExtractor;
+import com.resume.ats.check.utils.KeywordMatcher;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 public class AtsCheckerController {
+
+    private final GeminiService geminiService;
+
+    public AtsCheckerController(GeminiService geminiService) {
+        this.geminiService = geminiService;
+    }
+
 
     private static final String[] SUPPORTED_FORMATS = {".pdf", ".doc", ".docx", ".txt", ".odt", ".rtf"};
 
@@ -29,14 +44,20 @@ public class AtsCheckerController {
                 throw new IllegalArgumentException("Invalid JD format. Supported formats: PDF, DOC, DOCX, TXT, ODT, RTF.");
             }
 
-            String resumeText = FileTextExtractor.extractText(resumeFile);
-            String jobDescriptionText = jdFile != null ? FileTextExtractor.extractText(jdFile) : jdText;
+           String resumeText = FileTextExtractor.extractText(resumeFile);
+
+String jobDescriptionText = jdFile != null
+        ? FileTextExtractor.extractText(jdFile)
+        : jdText;
+
+String aiSuggestions = geminiService.getSuggestions(resumeText, jobDescriptionText);
 
             if (jobDescriptionText == null || jobDescriptionText.isEmpty()) {
                 throw new IllegalArgumentException("Job description is required as a file or plain text.");
             }
 
             Map<String, Object> result = KeywordMatcher.calculateMatch(resumeText, jobDescriptionText);
+            result.put("aiSuggestions",aiSuggestions);
             return ResponseEntity.ok(result);
 
         } catch (Exception e) {

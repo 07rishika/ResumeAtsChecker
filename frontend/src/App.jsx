@@ -134,7 +134,11 @@ function App() {
                             <h3>Missing Skills:</h3>
                             <p>{result.missingSkills.join(', ')}</p>
                         </div>
+                    <div>
+                        <h3>AI Suggestions:</h3>
+                        <p>{result.aiSuggestions}</p>
                     </div>
+                </div>
                 </div>
             )}
 
@@ -142,6 +146,7 @@ function App() {
                 <p>&copy; 2025 Resume ATS Checker. All rights reserved.</p>
             </footer>
         </div>
+        
     );
 }
 
