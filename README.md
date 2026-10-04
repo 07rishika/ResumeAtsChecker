@@ -1,63 +1,100 @@
-# AI Resume ATS Checker
+# Resume ATS Checker
 
-An AI-powered Resume ATS Checker that analyzes resumes against job descriptions, calculates ATS match scores, identifies missing skills, and generates personalized improvement suggestions using Large Language Models (LLMs).
+An AI-powered Resume ATS Checker that analyzes a resume against a job description, calculates an ATS match score, identifies matched and missing skills, and generates AI-powered resume improvement suggestions.
 
 ## Features
 
-* Upload resumes in PDF, DOC, DOCX, TXT, ODT, and RTF formats
-* ATS score calculation based on job description matching
-* Missing skills identification
-* AI-powered resume improvement suggestions
-* Resume and Job Description text extraction
-* Modern and responsive user interface
+- Upload resumes in supported document formats.
+- Extract text from resumes and job descriptions.
+- Match resume skills and keywords against job requirements.
+- Calculate an ATS match score based on skill matching.
+- Identify matched and missing skills.
+- Generate AI-powered resume improvement suggestions.
 
 ## Tech Stack
 
-### Backend
+**Backend**
+- Java
+- Spring Boot
+- Apache Tika
+- Maven
+- OkHttp
 
-* Java
-* Spring Boot
-* Apache Tika
-* Maven
-* OkHttp
+**Frontend**
+- React
+- Vite
+- JavaScript
+- CSS
 
-### Frontend
-
-* React
-* Vite
-* JavaScript
-* CSS
-
-### AI Integration
-
-* Groq API
-* Llama 3.1 8B Instant
+**AI Integration**
+- Groq API
+- Large Language Models (LLMs)
 
 ## Project Workflow
 
-1. Upload Resume
-2. Enter or Upload Job Description
-3. Extract Resume Content
-4. Match Skills and Keywords
-5. Calculate ATS Score
-6. Generate AI-Powered Suggestions
-7. Display Results
+1. Upload a resume and provide a job description.
+2. Extract text from the provided documents.
+3. Identify skills and keywords in the resume and job description.
+4. Match skills and calculate the ATS score.
+5. Display matched skills, missing skills, and AI-generated suggestions.
 
 ## Key Learnings
 
-* REST API Development with Spring Boot
-* File Processing and Text Extraction
-* Frontend-Backend Integration
-* AI API Integration
-* Git and GitHub Workflow
-* Deployment using Render
+- REST API development using Spring Boot
+- Resume text extraction and document processing
+- Frontend and backend integration
+- AI API integration
+- Git and GitHub version control
 
-## Future Enhancements
+## Author
 
-* Multi-LLM Comparison
-* Resume History Tracking
-* User Authentication
-* Dashboard Analytics
+Rishika Agnihotri# Resume ATS Checker
+
+An AI-powered Resume ATS Checker that analyzes a resume against a job description, calculates an ATS match score, identifies matched and missing skills, and generates AI-powered resume improvement suggestions.
+
+## Features
+
+- Upload resumes in supported document formats.
+- Extract text from resumes and job descriptions.
+- Match resume skills and keywords against job requirements.
+- Calculate an ATS match score based on skill matching.
+- Identify matched and missing skills.
+- Generate AI-powered resume improvement suggestions.
+
+## Tech Stack
+
+**Backend**
+- Java
+- Spring Boot
+- Apache Tika
+- Maven
+- OkHttp
+
+**Frontend**
+- React
+- Vite
+- JavaScript
+- CSS
+
+**AI Integration**
+- Groq API
+- Large Language Models (LLMs)
+
+## Project Workflow
+
+1. Upload a resume and provide a job description.
+2. Extract text from the provided documents.
+3. Identify skills and keywords in the resume and job description.
+4. Match skills and calculate the ATS score.
+5. Display matched skills, missing skills, and AI-generated suggestions.
+
+## Key Learnings
+
+- REST API development using Spring Boot
+- Resume text extraction and document processing
+- Frontend and backend integration
+- AI API integration
+- Git and GitHub version control
 
 ## Author
 
