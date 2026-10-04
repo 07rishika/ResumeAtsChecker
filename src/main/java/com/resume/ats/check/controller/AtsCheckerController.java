@@ -50,12 +50,17 @@ String jobDescriptionText = jdFile != null
         ? FileTextExtractor.extractText(jdFile)
         : jdText;
 
-String aiSuggestions = geminiService.getSuggestions(resumeText, jobDescriptionText);
 
-            if (jobDescriptionText == null || jobDescriptionText.isEmpty()) {
-                throw new IllegalArgumentException("Job description is required as a file or plain text.");
-            }
+if (jobDescriptionText == null || jobDescriptionText.isBlank()) {
+    throw new IllegalArgumentException(
+        "Job description is required as a file or plain text.");
+}
 
+String aiSuggestions = geminiService.getSuggestions(
+    resumeText, jobDescriptionText);
+
+            System.out.println("RESUME SKILLS: " + com.resume.ats.check.utils.OpenNlpSkillExtractor.extractNouns(resumeText));
+System.out.println("JD SKILLS: " + com.resume.ats.check.utils.OpenNlpSkillExtractor.extractNouns(jobDescriptionText));
             Map<String, Object> result = KeywordMatcher.calculateMatch(resumeText, jobDescriptionText);
             result.put("aiSuggestions",aiSuggestions);
             return ResponseEntity.ok(result);
